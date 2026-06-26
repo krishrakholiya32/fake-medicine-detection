@@ -1,0 +1,19 @@
+data_dir: /kaggle/working/data   # output of prepare_dataset.py: {train,val,test}/<class_name>/*.jpg
+run_name: pillclf_effnetb0_v1
+output_dir: /kaggle/working/runs
+
+model_name: efficientnet_b0      # timm model name
+image_size: 224
+batch_size: 32
+num_workers: 2
+
+freeze_epochs: 5         # phase 1: train classifier head only (more epochs than deepfake project — far less data per class)
+finetune_epochs: 15      # phase 2: unfreeze last blocks, lower lr
+unfreeze_blocks: 3
+
+freeze_lr: 0.001
+finetune_lr: 0.0001
+weight_decay: 0.00001
+
+early_stopping_patience: 5
+seed: 42

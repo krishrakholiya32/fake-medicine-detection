@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Models / weights
+*.pt
+*.onnx
+models/*.onnx
+models/*.pt
+models/labels.json
+
+# Training artifacts (large, regenerable)
+training/data/
+training/runs/
+
+# Env
+.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Uploads / storage
+backend/storage/
+backend/uploads/
+
+# Downloaded artifacts (place in root then run scripts/setup_models.py)
+labels.json
+
+# Zip archives from Kaggle downloads
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
