@@ -93,13 +93,16 @@ with col2:
     claimed = st.text_input("Claimed drug name (optional)", placeholder="e.g. aspirin 500mg")
 
 if uploaded:
+    st.image(uploaded, caption="Uploaded pill photo", width=360)
+    check = st.button("💊 Check Pill", use_container_width=True, type="primary")
+
+if uploaded and check:
     image = Image.open(uploaded).convert("RGB")
     image_rgb = np.array(image)
 
     with st.spinner("Identifying pill…"):
         predictions = predict(image_rgb)
 
-    st.image(image, caption="Uploaded pill photo", width=360)
     st.divider()
 
     top_name, top_conf = predictions[0]
