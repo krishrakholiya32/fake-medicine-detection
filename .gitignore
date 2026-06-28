@@ -4,12 +4,12 @@ __pycache__/
 .venv/
 venv/
 
-# Models / weights
+# Models / weights (track only the exported ONNX + labels, not PT checkpoints)
 *.pt
-*.onnx
-models/*.onnx
 models/*.pt
-models/labels.json
+# Allow the deployed model and labels
+!models/*.onnx
+!models/labels.json
 
 # Training artifacts (large, regenerable)
 training/data/
@@ -25,9 +25,6 @@ frontend/dist/
 # Uploads / storage
 backend/storage/
 backend/uploads/
-
-# Downloaded artifacts (place in root then run scripts/setup_models.py)
-labels.json
 
 # Zip archives from Kaggle downloads
 *.zip
