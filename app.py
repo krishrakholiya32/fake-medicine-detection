@@ -43,10 +43,9 @@ def _softmax(x: np.ndarray) -> np.ndarray:
 
 def predict(image_rgb: np.ndarray, top_k: int = 3) -> list[tuple[str, float]]:
     """Return top-k (label, probability) pairs."""
-    import cv2
     session = _load_session()
     labels = _load_labels()
-    resized = cv2.resize(image_rgb, (IMAGE_SIZE, IMAGE_SIZE), interpolation=cv2.INTER_AREA)
+    resized = np.array(Image.fromarray(image_rgb).resize((IMAGE_SIZE, IMAGE_SIZE), Image.LANCZOS))
     img = resized.astype(np.float32) / 255.0
     img = (img - IMAGENET_MEAN) / IMAGENET_STD
     img = img.transpose(2, 0, 1)[np.newaxis].astype(np.float32)
